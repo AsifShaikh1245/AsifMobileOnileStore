@@ -39,7 +39,7 @@ public partial class _Default : System.Web.UI.Page
         }
         try
         {
-            SqlDataAdapter da3 = new SqlDataAdapter("Select fname,mname,lname,contact,uid,email from Login where Uid='" + txtusername.Text + "' and password='" + txtpassword.Text + "'", con);
+             SqlDataAdapter da3 = new SqlDataAdapter("Select fname,mname,lname,contact,uid,email from [sentiment].[dbo].[Login] where Username='" + txtusername.Text + "' and password='" + txtpassword.Text + "'", con);
             DataSet ds3 = new DataSet();
             da3.Fill(ds3);
            
@@ -51,7 +51,8 @@ public partial class _Default : System.Web.UI.Page
             Session["email"] = Convert.ToString(ds3.Tables[0].Rows[0][5]);
 
 
-            SqlDataAdapter da2 = new SqlDataAdapter("Select uid,password from Login where Uid='" + txtusername.Text + "' and password='" + txtpassword.Text + "'", con);
+            SqlDataAdapter da2 = new SqlDataAdapter("Select uid,password from [sentiment].[dbo].[Login] where Username='" + txtusername.Text + "' and password='" + txtpassword.Text + "'", con);
+       
             DataSet ds2 = new DataSet();
             da2.Fill(ds2);
             if (ds2.Tables[0].Rows.Count != 0)
